@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"  />
+<title> Tic Tac Toe </title>
+
+<!-- intern jquery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" 
+integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+crossorigin="anonymous"></script>
+
+<!-- external style sheet -->
+<link rel="stylesheet" href="style.css">  
+
+</head>
+<body>
+        <div class="header">
+                <h1> TIC TAC TOE </h1>
+        </div>
+
+        <div class="player-turn" id="turn">
+                <p> Player X's Turn </p>
+        </div>
+
+        <!-- creates a 3x3 grid -->
+        <div class="grid" id="game-board"> 
+                <div class="row" id="row1">
+                        <div class="cell" id="r1col1"></div>
+                        <div class="cell" id="r1col2"></div>
+                        <div class="cell" id="r1col3"></div>
+                </div>
+                <div class="row" id="row2">
+                        <div class="cell" id="r2col1"></div>
+                        <div class="cell" id="r2col2"></div>
+                        <div class="cell" id="r2col3"></div>
+                </div>
+                <div class="row" id="row3">
+                        <div class="cell" id="r3col1"></div>
+                        <div class="cell" id="r3col2"></div>
+                        <div class="cell" id="r3col3"></div>
+                </div>
+        </div>
+
+        <div class="button">
+            <a href="index.html">
+                <button> Play Again </button>
+            </a>
+        </div>
+
+        <script>
+                const player_turn = $('#turn');
+                const cells = $('.cell');
+                let curr_player = 'X';
+
+                function cell_click() {
+                    const cell = $(this);
+                    // Check if the cell is empty
+                    if (!cell.text()) {
+                        cell.text(curr_player);
+                        // if curr_player is 'X' changes it to 'O', if not, leaves it as 'X'
+                        curr_player = curr_player === 'X' ? 'O' : 'X';
+                        player_turn.text(`Player ${curr_player}'s Turn`);
+                        checkWin();
+                    }
+                }
+
+                // Add a click event listener to each cell
+                cells.on('click', cell_click);
+
+                // check for a win
+                function checkWin() {
+                    const win_cond = [
+                    // Row wins
+                    ['r1col1', 'r1col2', 'r1col3'],
+                    ['r2col1', 'r2col2', 'r2col3'],
+                    ['r3col1', 'r3col2', 'r3col3'],
+                    // Column wins
+                    ['r1col1', 'r2col1', 'r3col1'],
+                    ['r1col2', 'r2col2', 'r3col2'],
+                    ['r1col3', 'r2col3', 'r3col3'],
+                    // Diagonal wins
+                    ['r1col1', 'r2col2', 'r3col3'],
+                    ['r1col3', 'r2col2', 'r3col1']
+                    ];
+
+                    // iterates through the win_cond arr
+                    for (const condition of win_cond) {
+                        // reassignes the values from the conditions array to this new array
+                        const [cell1, cell2, cell3] = condition;
+                        const value1 = $('#' + cell1).text();
+                        const value2 = $('#' + cell2).text();
+                        const value3 = $('#' + cell3).text();
+
+                        if (value1 && (value1 === value2) && (value2 === value3)) {
+                            player_turn.text(`Player ${value1} wins!`);
+                            // You can also disable further cell clicks to end the game here
+                            cells.off('click', cell_click);
+                            return;
+                        }
+                    }
+                }       
+
+        </script>
+</body>
+</html>

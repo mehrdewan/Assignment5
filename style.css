@@ -1,0 +1,51 @@
+/* put code here for style of tic tac toe game */
+
+* {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: rgb(251, 226, 230);
+}
+
+.header {
+        padding-top: 30px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-size: 22px;
+        color: rgb(245, 122, 142);
+}
+
+.player-turn {
+        text-align: center;
+        margin: 0 auto;
+        font-size: 15px;
+        border: 2px solid black;
+        width: 200px;
+        padding: 1px;
+}
+
+.grid {
+        padding-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        gap: 5px;
+        justify-content: center;
+}
+
+.cell {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        font-size: 36px;
+        cursor: pointer;
+        user-select: none;
+        background-color: white;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(245, 122, 142);
+}
+
+.button {
+        padding-top: 40px;
+        text-align: center;
+}

@@ -92,7 +92,7 @@ crossorigin="anonymous"></script>
                         const value3 = $('#' + cell3).text();
 
                         if (value1 && (value1 === value2) && (value2 === value3)) {
-                            player_turn.text(`Player ${value1} wins!`);
+                            player_turn.html(`<span style="font-weight: bold;"> Player ${value1} Wins!</span>`);
                             // You can also disable further cell clicks to end the game here
                             cells.off('click', cell_click);
                             return;

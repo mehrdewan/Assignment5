@@ -14,12 +14,17 @@
 }
 
 .player-turn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         margin: 0 auto;
         font-size: 15px;
         border: 2px solid black;
         width: 200px;
+        min-height: 40px; /* Set a minimum height */
         padding: 1px;
+        line-height: 10px;
 }
 
 .grid {
